@@ -1,14 +1,9 @@
 <?php
 
-require_once "GrauImportanciaInterface.php";
-require_once "EnderecoCobrancaInterface.php";
-
-class PessoaJuridica extends Cliente implements JsonSerializable, GrauImportanciaInterface, EnderecoCobrancaInterface
+class PessoaJuridica extends Cliente implements JsonSerializable
 {
     private $cnpj;
     private $ie;
-    private $grau;
-    private $endecobranca;
 
     public function getCnpj(){return $this->cnpj;}
     public function setCnpj($cnpj){$this->cnpj = $cnpj; return $this;}
@@ -19,23 +14,6 @@ class PessoaJuridica extends Cliente implements JsonSerializable, GrauImportanci
         $this->tipo = "Pessoa Juridica";
     }
 
-    public function setGrau($grau)
-    {
-        $this->grau = $grau;
-        return $this;
-    }
-
-    public function getGrau(){
-        return $this->grau;}
-
-    public function setEnderecoCobranca($endecobranca){
-        $this->endecobranca = $endecobranca;
-        return $this;
-    }
-
-    public function getEnderecoCobranca(){
-        return $this->endecobranca;
-    }
 
     public function JsonSerialize(){
         return [

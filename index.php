@@ -176,7 +176,7 @@
         <script>
             angular
                 .module("pessoas", [])
-                .controller("Repetir",function TestCtrl($scope) {
+                .controller("Repetir", function TestCtrl($scope) {
                     $scope.range = function(n) {
                         return new Array(n);
                     };
