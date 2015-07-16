@@ -1,14 +1,13 @@
 <?php
 class Cliente{
-  public $nome;
-  public $idade;
-  public $cpf;
-  public $endereco;
+    protected $nome;
+    protected $tipo;
+    protected $endereco;
 
-    public function __construct($nome, $idade, $cpf, $endereco){
-        $this->nome = $nome;
-        $this->idade = $idade;
-        $this->cpf = $cpf;
-        $this->endereco = $endereco;
-    }
+    public function getTipo(){return $this->tipo;}
+    public function setTipo($tipo){$this->tipo = $tipo; return $this;}
+    public function getNome(){return $this->nome;}
+    public function setNome($nome){$this->nome = $nome; return $this;}
+    public function getEndereco(){return $this->endereco;}
+    public function setEndereco($endereco){$this->endereco = $endereco; return $this;}
 }

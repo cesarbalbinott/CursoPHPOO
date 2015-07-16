@@ -10,17 +10,94 @@
     <body ng-app="pessoas">
         <?php
             require_once 'Cliente.php';
+            require_once 'PessoaFisica.php';
+            require_once 'PessoaJuridica.php';
 
-            $pessoa1 = new Cliente("Cesar Balbinott",28,"009.725.829-67","Rua Andre Lunardi, 1291");
-            $pessoa2 = new Cliente("Marta da Silva",18,"623.555.786-55","Rua Ari Lunardi, 1231");
-            $pessoa3 = new Cliente("Monica Fagundes",38,"009.375.232-98","Rua Sao Paulo, 324");
-            $pessoa4 = new Cliente("Claudio Dias",34,"876.233.098-34","Av. Brasil, 2615");
-            $pessoa5 = new Cliente("Marci de Sa",27,"654.983.122-87","Rua Treze de Maio, 435");
-            $pessoa6 = new Cliente("Marcio Goncalves",32,"345.122.654-34","Rua Fidencio de Souza Melo, 3321");
-            $pessoa7 = new Cliente("Paulo Silva",33,"456.554.223-98","Rua Atlanta, 554D");
-            $pessoa8 = new Cliente("Maria Antonieta das Neves",44,"324.222.112-87","Av. Sao Paulo, 91");
-            $pessoa9 = new Cliente("Artur Rei",54,"989.333.234-09","Av. Independencia, 912");
-            $pessoa10 = new Cliente("Fatima Aparecida",14,"002.223.345-22","Rua 7 de Setembro, 1314E");
+            $pessoa1 = new PessoaFisica();
+            $pessoa1->setNome("Cesar Balbinott")
+                    ->setEndereco("Rua Andre Lunardi, 1291")
+                    ->setCpf("009.735.829-67")
+                    ->setRg("4.738.500-6")
+                    ->setIdade(28)
+                    ->setGrau(5)
+                ->setEnderecoCobranca("Rua 17");
+
+            $pessoa2 = new PessoaJuridica();
+            $pessoa2->setNome('Fusion Sistemas LTDA')
+                    ->setEndereco('Rua Andre Lunardi, 1259')
+                    ->setCnpj('00.000.000/0000-00')
+                    ->setIe('255.255.255')
+                ->setGrau(2)
+                ->setEnderecoCobranca("Rua 81");
+
+            $pessoa3 = new PessoaJuridica();
+            $pessoa3->setNome('Empresa 1 LTDA')
+                ->setEndereco('Rua Andre, 1259')
+                ->setCnpj('00.000.000/1111-00')
+                ->setIe('255.255.255')
+                ->setGrau(2)
+                ->setEnderecoCobranca("Rua 41");
+
+            $pessoa4 = new PessoaJuridica();
+            $pessoa4->setNome('Empresa 3 LTDA')
+                ->setEndereco('Rua Lunardi, 1359')
+                ->setCnpj('00.111.111/0000-00')
+                ->setIe('255.255.255')
+                ->setGrau(4)
+                ->setEnderecoCobranca("Rua 31");
+
+            $pessoa5 = new PessoaJuridica();
+            $pessoa5->setNome('Fusion Sistemas 123 SA')
+                ->setEndereco('Rua Castelo Branco, 12')
+                ->setCnpj('00.000.000/0000-00')
+                ->setIe('255.255.255')
+                ->setGrau(3)
+                ->setEnderecoCobranca("Rua 21");
+
+            $pessoa6 = new PessoaFisica();
+            $pessoa6->setNome("Marci de Sa")
+                ->setEndereco("Avenida Brasil, 334")
+                ->setCpf("009.546.229-67")
+                ->setRg("4.238.333-6")
+                ->setIdade(34)
+                ->setGrau(4)
+                ->setEnderecoCobranca("Rua 122");
+
+            $pessoa7 = new PessoaFisica();
+            $pessoa7->setNome("Fernando da Silva")
+                ->setEndereco("Rua Barrao do Rio Branco, 1291")
+                ->setCpf("009.722.829-67")
+                ->setRg("4453.456-6")
+                ->setIdade(45)
+                ->setGrau(1)
+                ->setEnderecoCobranca("Rua 11");
+
+            $pessoa8 = new PessoaFisica();
+            $pessoa8->setNome("Cesar da Silva")
+                ->setEndereco("Rua 123, 1291")
+                ->setCpf("009.222.829-67")
+                ->setRg("3746438.500-6")
+                ->setIdade(21)
+                ->setGrau(1)
+                ->setEnderecoCobranca("Rua 144");
+
+            $pessoa9 = new PessoaFisica();
+            $pessoa9->setNome("Eliza Samudio")
+                ->setEndereco("Rua Andre Gomes, 342E")
+                ->setCpf("009.735.829-67")
+                ->setRg("989.3837487-0")
+                ->setIdade(23)
+                ->setGrau(2)
+                ->setEnderecoCobranca("Rua 13");
+
+            $pessoa10 = new PessoaFisica();
+            $pessoa10->setNome("Joao de Sa")
+                ->setEndereco("Rua Andre Lunardi, 15D")
+                ->setCpf("334.332.829-43")
+                ->setRg("5.123.500-6")
+                ->setIdade(22)
+                ->setGrau(3)
+                ->setEnderecoCobranca("Rua 12");
 
             $pessoas = array($pessoa1, $pessoa2, $pessoa3, $pessoa4, $pessoa5, $pessoa6, $pessoa7, $pessoa8, $pessoa9, $pessoa10);
         ?>
@@ -29,26 +106,24 @@
             <div class="mdl-layout__content">
                 <div class="page-content">
                     <div ng-controller="CtrlPessoas">
-
                         <header class="mdl-layout__header">
                             <div class="mdl-layout__header-row">
-                                <!-- Title -->
                                 <span class="mdl-layout-title">Cadastro de Clientes</span>
-                                <!-- Add spacer, to align navigation to the right -->
                                 <div class="mdl-layout-spacer"></div>
-                                <!-- Navigation. We hide it in small screens. -->
-
                             </div>
                         </header>
-
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                             <thead>
                                 <tr>
                                     <th class="mdl-data-table__cell--non-numeric">Nome</th>
                                     <th class="mdl-data-table__cell--non-numeric">Detalhes</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Idade</th>
-                                    <th class="mdl-data-table__cell--non-numeric">CPF</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Tipo</th>
+                                    <th class="mdl-data-table__cell--non-numeric">CPF/CNPJ</th>
+                                    <th class="mdl-data-table__cell--non-numeric">RG/IE</th>
                                     <th class="mdl-data-table__cell--non-numeric">Endereço</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Idade</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Endereço de Cobrança</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Importância</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,9 +136,17 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.idade }}</td>
-                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.cpf }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.tipo }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.cpf + pessoa.cnpj }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.rg + pessoa.ie }}</td>
                                     <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.endereco }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.idade }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >{{ pessoa.endecobranca }}</td>
+                                    <td class="mdl-data-table__cell--non-numeric" ng-show = "checado" >
+                                        <div ng-controller="Repetir">
+                                            <div><i class="material-icons" ng-repeat="a in range(pessoa.grau)">grade</i></div>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -73,9 +156,11 @@
                     <select ng-model="campo.id">
                         <option value="">Selecione um campo</option>
                         <option value="nome">Nome</option>
-                        <option value="idade">Idade</option>
-                        <option value="cpf">CPF</option>
                         <option value="endereco">Endereço</option>
+                        <option value="cpf">CPF</option>
+                        <option value="cnpj">CNPJ</option>
+                        <option value="rg">RG</option>
+                        <option value="ie">IE</option>
                     </select>
                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
                         <input type="radio" id="option-1" class="mdl-radio__button" ng-model="orderBy" value="" name="radios"/>
@@ -88,24 +173,19 @@
                 </h5>
             </div>
         </div>
-
         <script>
             angular
                 .module("pessoas", [])
+                .controller("Repetir",function TestCtrl($scope) {
+                    $scope.range = function(n) {
+                        return new Array(n);
+                    };
+                })
                 .controller("CtrlPessoas", function($scope){
-                    $scope.pessoas =
-                        [
-                            <?php foreach($pessoas as $pessoa){
-                            echo json_encode($pessoa);
-                            ?>,<?php } ?>
-                        ]
+                    $scope.pessoas = <?php echo json_encode($pessoas); ?>
                 });
         </script>
     </body>
-
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-
 </html>
