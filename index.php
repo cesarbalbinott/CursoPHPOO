@@ -9,20 +9,23 @@
     </head>
     <body ng-app="pessoas">
         <?php
-            require_once 'Cliente.php';
-            require_once 'PessoaFisica.php';
-            require_once 'PessoaJuridica.php';
+            define('CLASS_DIR', 'src/');
+            set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
+            spl_autoload_register();
 
-            $pessoa1 = new PessoaFisica();
+            use \CAB\Classes\PessoaJuridica;
+            use \CAB\Classes\PessoaFisica;
+
+            $pessoa1 = new \CAB\Classes\PessoaFisica();
             $pessoa1->setNome("Cesar Balbinott")
                     ->setEndereco("Rua Andre Lunardi, 1291")
                     ->setCpf("009.735.829-67")
                     ->setRg("4.738.500-6")
                     ->setIdade(28)
                     ->setGrau(5)
-                ->setEnderecoCobranca("Rua 17");
+                    ->setEnderecoCobranca("Rua 17");
 
-            $pessoa2 = new PessoaJuridica();
+            $pessoa2 = new CAB\Classes\PessoaJuridica();
             $pessoa2->setNome('Fusion Sistemas LTDA')
                     ->setEndereco('Rua Andre Lunardi, 1259')
                     ->setCnpj('00.000.000/0000-00')

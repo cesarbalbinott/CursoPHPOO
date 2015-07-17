@@ -1,6 +1,8 @@
 <?php
 
-class PessoaJuridica extends Cliente implements JsonSerializable
+namespace CAB\Classes;
+
+class PessoaJuridica extends \CAB\Classes\Cliente implements \JsonSerializable
 {
     private $cnpj;
     private $ie;
